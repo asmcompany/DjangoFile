@@ -1,0 +1,15 @@
+
+      <div class="thumbnail">
+       <a href="{% url 'products:detail' slug=product.slug %}">
+           <img style="height: 200px ; width: 200px" src="{{ product.image.url }}" alt="{{ product.title }}">
+       </a>
+      <div class="caption">
+        <h3 style="text-align: center">{{ product.title }}</h3>
+        <p style="text-align: center">{{ product.description | truncatewords:4 }}</p>
+
+        <p style="text-align: center">
+            <a href="{{ product.get_absolute_url }}" class="btn btn-primary btn-block" role="button">show product</a>
+            <a href="{% url 'products:detail' slug=product.slug %}" class="btn btn-warning btn-block" role="button">show product</a>
+        </p>
+      </div>
+      </div>
