@@ -12,7 +12,7 @@ def home_page(request):
     }
     if request.user.is_authenticated:
         context["new_content"] = "this is new content"
-    return render(request, "home_page.html", context)
+    return render(request, "index.html", context)
 
 
 def home_page_old(request):
