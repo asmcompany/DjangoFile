@@ -1,10 +1,12 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from django.http import Http404
-
+from django.http import Http404, JsonResponse
 from .models import Product
+from django.contrib.auth.decorators import login_required
 
+import json
+from django.http import HttpResponse
 # Create your views here.
 
 class ProdutFeaturedListView(ListView):
@@ -114,3 +116,30 @@ def product_detail_view(request, productId=None, *args, **kwargs):
     }
 
     return render(request, "products/product_detail.html", context)
+
+
+
+
+
+
+
+
+
+@login_required
+def like(request):
+    if request.POST.get('action') == 'post':
+        result = ''
+        id = int(request.POST.get('postid'))
+        post = get_object_or_404(Product, id=id)
+        if post.likes.filter(id=request.user.id).exists():
+            post.likes.remove(request.user)
+            post.like_count -= 1
+            result = post.like_count
+            post.save()
+        else:
+            post.likes.add(request.user)
+            post.like_count += 1
+            result = post.like_count
+            post.save()
+
+        return JsonResponse({'result': result, })

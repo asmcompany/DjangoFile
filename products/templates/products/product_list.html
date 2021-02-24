@@ -6,32 +6,18 @@
 
 <br>
 
-    {% for product in object_list %}
-        <div class="col-sm-6 col-md-4" style="border: 1px solid {% cycle 'blue' 'transparent' 'red' %}">
-            {{ forloop.counter }}
-            {% include 'products/components/product_item.html' with prpduct=product %}
-        </div>
+
+<div class="row tm-catalog-item-list">
+   {% for product in object_list %}
+    
+        {% include 'products/components/product_item.html' with prpduct=product %}
+     
     {% endfor %}
-
-
-
-   {% comment %}<div class="container">
-   <div class="row">
-    {% for product in object_list %}
-        {% if forloop.counter|divisibleby:2 %}
-        <div class="col-sm-6 col-md-4" style="border: 1px solid red">
-            {{ forloop.counter }}
-            {% include 'products/components/product_item.html' with prpduct=product %}
-        </div>
-            {% else %}
-            <div class="col-sm-6 col-md-4" style="border: 1px solid blue">
-                {{ forloop.counter }}
-                {% include 'products/components/product_item.html' with prpduct=product %}
-        </div>
-        {% endif %}
-     {% endfor %}
 </div>
-</div>
-{% endcomment %}
+
+
 {% endblock %}
 
+{% block header_styles %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+{% endblock %}

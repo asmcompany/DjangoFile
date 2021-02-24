@@ -2,13 +2,16 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import ContactForm, LoginForm, RegisterForm
+from products.models import Product
 
 def home_page(request):
     print(f"is user logged in : {request.user.is_authenticated}")
+    products =  Product.objects.all()
     context = {
         "title": "صفحه اصلی",
         "content": "خوش امدید",
-        "brand": "Topleaarn Eshop From Views.py"
+        "brand": "Topleaarn Eshop From Views.py",
+        "object_list": products
     }
     if request.user.is_authenticated:
         context["new_content"] = "this is new content"

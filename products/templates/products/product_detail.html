@@ -1,25 +1,94 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% url 'register' as register_url %}
 {% block content %}
 
-    <div class="container">
-     <div class="row">
-      <div class="col-sm-6 col-md-4">
-       <div class="thumbnail">
-        <img style="height: 200px ; width: 200px" src="{{ object.image.url }}" alt="{{ object.title }}">
-         <div class="caption">
-          <h3 style="text-align: center">{{ object.title | title}}</h3>
+<div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
+    <div class="position-relative tm-thumbnail-container">
+        <img style="height: 300px ; width: auto" src="{{ object.image.url }}" alt="{{ object.title }}">
+        <a href="{% url 'products:detail' slug=product.slug %}" class="position-absolute tm-img-overlay">
+                                   
+                                </a>
+    </div>
+        <div class="p-4 tm-bg-gray tm-catalog-item-description">
+          <h3 class="tm-text-primary mb-3 tm-catalog-item-title">{{ object.title | title}}</h3>
              <h4 style="direction: rtl">{{ object.timestamp | timesince }} قبل</h4>
              <h4>{{ object.timestamp | time }} </h4>
-           <p style="text-align: center">{{ object.description | linebreaksbr }}</p>
+           <p class="tm-catalog-item-text">{{ object.description | linebreaksbr }}</p>
+          
+          
+          {% csrf_token %}
+          
           <p style="text-align: center">
+          <div class="d-flex">
+        {% if request.user.is_authenticated %}
+        <div class="pr-2">
+          <span class="" id="like_count">{{product.like_count}}</span>
+          <button class="btn btn-link text-dark p-0 border-0 btn-outline-light" id="like-button" value="{{product.id}}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+</svg>
+          </button>
+        </div>
+        {% else %}
+        <div class="pr-2">
+          <span class="" id="like_count">{{product.like_count}}</span>
+          <a href="{{ register_url }}" class="btn btn-link text-dark p-0 border-0 btn-outline-light"
+            value="{{product.id}}">
+            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
+            </svg>
+          </a>
+        </div>
+        {% endif %}
+       
+       
+        </div>
               <a href="#" class="btn btn-primary" role="button">buy</a>
               <a href="#" class="btn btn-default" role="button">cancel</a>
           </p>
-          </div>
-         </div>
         </div>
-       </div>
-      </div>
+    </div>
+</div>
 
+                                
+
+                               
+                        
+        
+
+
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).on('click', '#like-button', function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '{% url "accounts:like" %}',
+      data: {
+        postid: $('#like-button').val(),
+        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+        action: 'post'
+      },
+      success: function (json) {
+        document.getElementById("like_count").innerHTML = json['result']
+      },
+      error: function (xhr, errmsg, err) {
+
+      }
+    });
+  })
+</script>                     
+                             
+                            
+
+
+
+{% endblock %}
+
+{% block header_styles %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
 {% endblock %}

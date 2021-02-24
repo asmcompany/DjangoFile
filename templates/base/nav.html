@@ -5,8 +5,6 @@
 {% url 'contact' as contact_url %}
 {% url 'register' as register_url %}
 
-
-
 <nav class="navbar navbar-expand-lg mr-0 ml-auto" id="tm-main-nav">
     <button class="navbar-toggler tm-bg-black py-2 px-3 mr-0 ml-auto collapsed" type="button" data-toggle="collapse"
             data-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,46 +13,45 @@
                                             <i class="fas fa-times tm-menu-opened-icon"></i>
                                         </span>
     </button>
-
-
-    <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
+                             
+                                 <div class="collapse navbar-collapse tm-nav" id="navbar-nav">
         <ul class="navbar-nav text-uppercase">
+                                
+                                    <li class="nav-item tm-nav-item"><a href="{{ home_url }}" style="color: #d5fffd" class="nav-link tm-nav-link {% if request.path == home_url %}active{% endif %}">Home</a>
+                                    </li>
+                                    
+                                    <li class="nav-item tm-nav-item"><a href="{{ product_url }}" style="color: #d5fffd" class="nav-link tm-nav-link{% if request.path == product_url %}active{% endif %} ">Products
+                                        </a></li>
+                             
+                                    <li class="nav-item tm-nav-item"><a href="{{ about_url }}" style="color: #d5fffd" class="nav-link tm-nav-link {% if request.path == about_url %}active{% endif %}">about us</a>
+                                    </li>
+            
+                                    <li class="nav-item tm-nav-item"><a href="{{ contact_url }}" style="color: #d5fffd" class="nav-link tm-nav-link {% if request.path == contact_url %}active{% endif %}">contact us</a>
+                                    </li>
+                                  {% if not request.user.is_authenticated %}
+                                    <li class="nav-item tm-nav-item"><a href="{{ login_url }}" style="color: #d5fffd" class="nav-link tm-nav-link {% if request.path == login_url %}active{% endif %}">Login</a>
+                                    </li>
+                                    <li class="nav-item tm-nav-item"><a href="{{ register_url }}" style="color: #d5fffd" class="nav-link tm-nav-link {% if request.path == register_url %}active{% endif %}">register</a>
+                                    </li>
+                                  {% else %}
+                                    <li class="nav-item tm-nav-item"><a href="/admin/logout" style="color: #d5fffd" class="nav-link tm-nav-link">logout</a>
+                                    </li>
+                                 {% endif %}
+                              
+                            
 
 
-            <li class="nav-item{% if request.path == home_url %}active{% endif %}"><a class="nav-link tm-nav-link"
-                                                                                      style="color:#d5fffd"
-                                                                                      href="{{ home_url }}">Home <span
-                    class="sr-only">(current)</span></a></li>
-            <li class="nav-item{% if request.path == product_url %}active{% endif %}"><a class="nav-link tm-nav-link"
-                                                                                 style="color: #d5fffd"
-                                                                                 href="{{ product_url }}">Products</a>
-            </li>
-            <li class="nav-item{% if request.path == about_url %}active{% endif %}"><a class="nav-link tm-nav-link"
-                                                                               style="color: #d5fffd"
-                                                                               href="{{ about_url }}">about us</a>
-            </li>
-            <li class="nav-item{% if request.path == contact_url %}active{% endif %}"><a class="nav-link tm-nav-link"
-                                                                                 style="color: #d5fffd"
-                                                                                 href="{{ contact_url }}">contact
-                us</a></li>
-
-            {% if not request.user.is_authenticated %}
-
-                <li class="nav-item{% if request.path == login_url %}active{% endif %}"><a class="nav-link tm-nav-link"
-                                                                                   style="color: #d5fffd"
-                                                                                   href="{{ login_url }}">Login</a>
-                </li>
-                <li class="nav-item{% if request.path == register_url %}active{% endif %}"><a class="nav-link tm-nav-link"
-                                                                                      style="color: #d5fffd"
-                                                                                      href="{{ register_url }}">register</a>
-                </li>
-
-            {% else %}
-
-                <li><a class="nav-link tm-nav-link" style="color:darksalmon" href="/admin/logout">logout</a></li>
 
 
-            {% endif %}
+
+
+   
+
+
+            
+         
+            
+            
 
 
 

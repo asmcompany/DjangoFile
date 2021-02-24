@@ -1,15 +1,27 @@
 
-      <div class="thumbnail">
-       <a href="{% url 'products:detail' slug=product.slug %}">
-           <img style="height: 200px ; width: 200px" src="{{ product.image.url }}" alt="{{ product.title }}">
-       </a>
-      <div class="caption">
-        <h3 style="text-align: center">{{ product.title }}</h3>
-        <p style="text-align: center">{{ product.description | truncatewords:4 }}</p>
 
-        <p style="text-align: center">
-            <a href="{{ product.get_absolute_url }}" class="btn btn-primary btn-block" role="button">show product</a>
-            <a href="{% url 'products:detail' slug=product.slug %}" class="btn btn-warning btn-block" role="button">show product</a>
-        </p>
-      </div>
-      </div>
+      
+
+
+
+
+                       <div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
+                            <div class="position-relative tm-thumbnail-container">
+                                <a href="{% url 'products:detail' slug=product.slug %}">
+                               <img style="height: 300px ; width: auto" src="{{ product.image.url }}" alt="{{ product.title }}">
+                               </a>
+                                <a href="{% url 'products:detail' slug=product.slug %}" class="position-absolute tm-img-overlay">     
+                                </a>
+                            </div>
+                            <div class="p-4 tm-bg-gray tm-catalog-item-description">
+                                <h3 class="tm-text-primary mb-3 tm-catalog-item-title">{{ product.title }}</h3>
+                                <p class="tm-catalog-item-text">{{ product.description | truncatewords:4 }}
+                                </p>
+
+
+
+    
+
+
+                            </div>
+                        </div>

@@ -28,7 +28,9 @@ urlpatterns = [
     path('contact-us', contact_page, name='contact'),
     path('login', login_page, name="list"),
     path('register', register_page, name='register'),
-    path('product/', include("products.urls", namespace="products"))
+    path('product/', include("products.urls", namespace="products")),
+
+    path('like/',include("products.urls", namespace="accounts"))
 
 ]
 

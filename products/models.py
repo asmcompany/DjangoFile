@@ -4,6 +4,9 @@ import random
 from .utils import unique_slug_generator
 from django.db.models.signals import pre_save
 from django.urls import reverse
+from django.contrib.auth.models import User
+
+
 
 
 def get_filename_ext(filepath):
@@ -67,6 +70,10 @@ class Product(models.Model):
     featured = models.BooleanField(default=False)
     active = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    likes = models.ManyToManyField(
+        User, related_name='like', default=None, blank=True)
+    like_count = models.BigIntegerField(default='0')
 
     def get_absolute_url(self):
         # return f"/products/{self.slug}"
