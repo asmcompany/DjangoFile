@@ -5,6 +5,7 @@
 {% url 'contact' as contact_url %}
 {% url 'register' as register_url %}
 
+
 <nav class="navbar navbar-expand-lg mr-0 ml-auto" id="tm-main-nav">
     <button class="navbar-toggler tm-bg-black py-2 px-3 mr-0 ml-auto collapsed" type="button" data-toggle="collapse"
             data-target="#navbar-nav" aria-controls="navbar-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,7 +35,7 @@
                                     <li class="nav-item tm-nav-item"><a href="{{ register_url }}" style="color: #d5fffd" class="nav-link tm-nav-link {% if request.path == register_url %}active{% endif %}">register</a>
                                     </li>
                                   {% else %}
-                                    <li class="nav-item tm-nav-item"><a href="/admin/logout" style="color: #d5fffd" class="nav-link tm-nav-link">logout</a>
+                                    <li class="nav-item tm-nav-item"><a href="/log-out" style="color: #d5fffd" class="nav-link tm-nav-link">logout</a>
                                     </li>
                                  {% endif %}
                               

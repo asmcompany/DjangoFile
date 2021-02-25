@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import home_page, about_page, home_page_old, contact_page, login_page, register_page
+from .views import home_page, about_page, home_page_old, contact_page, login_page, register_page, log_out
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -29,8 +29,9 @@ urlpatterns = [
     path('login', login_page, name="list"),
     path('register', register_page, name='register'),
     path('product/', include("products.urls", namespace="products")),
-
-    path('like/',include("products.urls", namespace="accounts"))
+    
+    path('like/',include("products.urls", namespace="accounts")),
+    path('log-out', log_out),
 
 ]
 

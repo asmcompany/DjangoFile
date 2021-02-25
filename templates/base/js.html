@@ -12,7 +12,7 @@
 
 
 
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 
 
 
@@ -28,6 +28,64 @@
 
     <script src="/templates/jsfile/jquery.js"></script>
     <script src="/templates/jsfile/bootstrap.js"></script>
+    
+    
+{% comment %} like js {% endcomment %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).on('click', '#like-button', function (e) {
+    e.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '{% url "accounts:like" %}',
+      data: {
+        postid: $('#like-button').val(),
+        csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+        action: 'post'
+      },
+      success: function (json) {
+        document.getElementById("like_count").innerHTML = json['result']
+      },
+      error: function (xhr, errmsg, err) {
+
+      }
+    });
+  })
+</script>
+
+    
+
+{% comment %} chart js {% endcomment %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+      <script>
+    
+
+
+        var config = {
+          type: 'line',
+          data: {
+            datasets: [{
+              data: {{ data|safe }},
+              backgroundColor: '#83c5be',
+               borderColor: '#457b9d',
+              label: 'Like-count'
+            }],
+            labels: {{ labels|safe }}
+          },
+          options: {
+            responsive: true
+          }
+        };
+    
+        window.onload = function() {
+          var ctx = document.getElementById('pie-chart').getContext('2d');
+          window.myPie = new Chart(ctx, config);
+        };
+    
+      </script>
+
+
+
     <script>
         function setVideoSize() {
             const vidWidth = 1920;

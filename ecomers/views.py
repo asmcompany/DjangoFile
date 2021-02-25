@@ -1,21 +1,50 @@
-from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .forms import ContactForm, LoginForm, RegisterForm
 from products.models import Product
+from django.contrib import auth
 
 def home_page(request):
     print(f"is user logged in : {request.user.is_authenticated}")
     products =  Product.objects.all()
+    labels = []
+    data = []
+
+    queryset = Product.objects.order_by('-like_count')[:7]
+    for product in queryset:
+        labels.append(product.title)
+        data.append(product.like_count)
     context = {
         "title": "صفحه اصلی",
         "content": "خوش امدید",
         "brand": "Topleaarn Eshop From Views.py",
-        "object_list": products
+        "object_list": products,
+        'labels': labels,
+        'data': data,
     }
     if request.user.is_authenticated:
         context["new_content"] = "this is new content"
     return render(request, "index.html", context)
+
+
+
+# CHART!!
+# def pie_chart(request):
+#     labels = []
+#     data = []
+
+#     queryset = Product.objects.order_by('-like_count')[:7]
+#     for product in queryset:
+#         labels.append(product.title)
+#         data.append(product.like_count)
+
+#     return render(request, 'index.html', {
+#         'labels': labels,
+#         'data': data,
+#     })
+
+
 
 
 def home_page_old(request):
@@ -117,3 +146,9 @@ def register_page(request):
         print(new_user)
     return render(request, "auth/register.html", context)
 
+
+
+
+def log_out(request):
+    logout(request)
+    return redirect('/')
