@@ -6,15 +6,45 @@
 
 <br>
 
+<div class="tm-page-wrap mx-auto">
+        
+              
+                    
 
-<div class="row tm-catalog-item-list">
+        <div class="container-fluid">
+            <div id="content" class="mx-auto tm-content-container">
+                <main>
+                
+
+                    
+ <div class="row">
    {% for product in object_list %}
     
         {% include 'products/components/product_item.html' with prpduct=product %}
      
     {% endfor %}
-</div>
+ </div>
+                        
 
+                    <!-- Catalog Paging Buttons -->
+                    <div>
+                        <ul class="nav tm-paging-links">
+                            <li class="nav-item active"><a href="#" class="nav-link tm-paging-link">1</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">2</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">3</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">4</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link tm-paging-link">></a></li>
+                        </ul>
+                    </div>
+                </main>
+
+                <!-- Subscribe form and footer links -->
+               
+                
+            </div> <!-- tm-content-container -->
+        </div>
+
+    </div> <!-- .tm-page-wrap -->
 
 {% endblock %}
 

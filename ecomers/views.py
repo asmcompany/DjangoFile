@@ -1,16 +1,20 @@
 from django.contrib.auth import authenticate, login, get_user_model, logout
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .forms import ContactForm, LoginForm, RegisterForm
 from products.models import Product
 from django.contrib import auth
+import requests
+import json
 
 def home_page(request):
     print(f"is user logged in : {request.user.is_authenticated}")
     products =  Product.objects.all()
     labels = []
     data = []
-
+    
+    response = requests.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,ADA,BNB,DOT,LTC&tsyms=USD').json()
+  
     queryset = Product.objects.order_by('-like_count')[:7]
     for product in queryset:
         labels.append(product.title)
@@ -22,6 +26,7 @@ def home_page(request):
         "object_list": products,
         'labels': labels,
         'data': data,
+        'response': response
     }
     if request.user.is_authenticated:
         context["new_content"] = "this is new content"

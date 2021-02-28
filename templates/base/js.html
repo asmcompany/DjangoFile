@@ -62,12 +62,19 @@ $(document).on('click', '#like-button', function (e) {
 
 
         var config = {
-          type: 'line',
+          type: 'pie',
           data: {
             datasets: [{
               data: {{ data|safe }},
-              backgroundColor: '#83c5be',
-               borderColor: '#457b9d',
+              backgroundColor: [
+            'rgb(255, 99, 132)',
+            'rgb(54, 162, 235)',
+            'rgb(255, 205, 86)',
+            '#52b788',
+            '#b7094c',
+            '#a44a3f',
+            '#a06cd5',
+          ],
               label: 'Like-count'
             }],
             labels: {{ labels|safe }}

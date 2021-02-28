@@ -69,7 +69,7 @@
                     </div>
 
                     
- <div class="row tm-catalog-item-list">
+ <div class="row">
    {% for product in object_list %}
     
         {% include 'products/components/product_item.html' with prpduct=product %}
@@ -100,19 +100,99 @@
 
     </div> <!-- .tm-page-wrap -->
 
+<hr>
 
- <div id="container" class="m-auto" style="width: 45%;">
+ <div id="container" class="m-auto" style="width: 70%;">
  <h3 class="text-center bg-secondary text-white">نمودار لایک خور ترین محصولات</h3>
         <canvas id="pie-chart"></canvas>
       </div>
-    
-      
 
+<hr>
 
+<div class="container">
 
+<p class="text-center display-4"> Coins </p>
 
-   
+<div class="col-md-4 border">
+ <div class="row">
+   <div class=" col-md-4 col-sm-4">
+    <img src="{% static 'images/bitpng.png' %}" class="" style="width:100%; height:100%" alt="...">
+   </div>
+  
+   <div class="col-md-8 col-sm-8">
+    <div>{{response.RAW.BTC.USD.FROMSYMBOL}}</div>
+    <p>{{response.RAW.BTC.USD.PRICE}}$</p>
+   </div>
+ </div>
+</div>
 
+<div class="col-md-4 border">
+ <div class="row">
+   <div class=" col-md-4 col-sm-4">
+    <img src="{% static 'images/ethpng.png' %}" class="" style="width:100%; height:100%" alt="...">
+   </div>
+  
+   <div class="col-md-8 col-sm-8">
+    <div>{{response.RAW.ETH.USD.FROMSYMBOL}}</div>
+    <p>{{response.RAW.ETH.USD.PRICE}}$</p>
+   </div>
+ </div>
+</div>
+
+<div class="col-md-4 border">
+ <div class="row">
+   <div class=" col-md-4 col-sm-4">
+    <img src="{% static 'images/bnbpng.png' %}" class="" style="width:100%; height:100%" alt="...">
+   </div>
+  
+   <div class="col-md-8 col-sm-8">
+    <div>{{response.RAW.BNB.USD.FROMSYMBOL}}</div>
+    <p>{{response.RAW.BNB.USD.PRICE}}$</p>
+   </div>
+ </div>
+</div>
+
+<div class="col-md-4 border">
+ <div class="row">
+   <div class=" col-md-4 col-sm-4">
+    <img src="{% static 'images/Litecoinpng.png' %}" class="" style="width:100%; height:100%" alt="...">
+   </div>
+  
+   <div class="col-md-8 col-sm-8">
+    <div>{{response.RAW.LTC.USD.FROMSYMBOL}}</div>
+    <p>{{response.RAW.LTC.USD.PRICE}}$</p>
+   </div>
+ </div>
+</div>
+
+<div class="col-md-4 border">
+ <div class="row">
+   <div class=" col-md-4 col-sm-4">
+    <img src="{% static 'images/adapng.png' %}" class="" style="width:100%; height:100%" alt="...">
+   </div>
+  
+   <div class="col-md-8 col-sm-8">
+    <div>{{response.RAW.ADA.USD.FROMSYMBOL}}</div>
+    <p>{{response.RAW.ADA.USD.PRICE}}$</p>
+   </div>
+ </div>
+</div>
+
+<div class="col-md-4 border">
+ <div class="row">
+   <div class=" col-md-4 col-sm-4">
+    <img src="{% static 'images/polkadotpng.png' %}" class="" style="width:100%; height:100%" alt="...">
+   </div>
+  
+   <div class="col-md-8 col-sm-8">
+    <div>{{response.RAW.DOT.USD.FROMSYMBOL}}</div>
+    <p>{{response.RAW.DOT.USD.PRICE}}$</p>
+   </div>
+ </div>
+</div>
+</div>
+
+<br>
 {% endblock %}
 
 {% block header_styles %}
