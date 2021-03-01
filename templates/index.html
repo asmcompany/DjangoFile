@@ -68,15 +68,20 @@
                         </div>
                     </div>
 
-                    
- <div class="row">
+
+                 <div class="container-fluid">   
+<div class="row">
+      <div class="col-md-12">
+                    <div class="row">
    {% for product in object_list %}
     
         {% include 'products/components/product_item.html' with prpduct=product %}
      
     {% endfor %}
  </div>
-                        
+           </div>             
+</div>  
+</div>  
 
                     <!-- Catalog Paging Buttons -->
                     <div>
@@ -102,9 +107,9 @@
 
 <hr>
 
- <div id="container" class="m-auto" style="width: 70%;">
- <h3 class="text-center bg-secondary text-white">نمودار لایک خور ترین محصولات</h3>
-        <canvas id="pie-chart"></canvas>
+ <div id="container" class="m-auto" >
+ <h3 class="container text-center bg-secondary text-white">نمودار لایک خور ترین محصولات</h3>
+        <canvas class="container" id="pie-chart"></canvas>
       </div>
 
 <hr>
@@ -115,11 +120,11 @@
 
 <div class="col-md-4 border">
  <div class="row">
-   <div class=" col-md-4 col-sm-4">
+   <div class=" col-md-4 col-sm-4 col-4">
     <img src="{% static 'images/bitpng.png' %}" class="" style="width:100%; height:100%" alt="...">
    </div>
   
-   <div class="col-md-8 col-sm-8">
+   <div class="col-md-8 col-sm-8 col-8">
     <div>{{response.RAW.BTC.USD.FROMSYMBOL}}</div>
     <p>{{response.RAW.BTC.USD.PRICE}}$</p>
    </div>
@@ -128,11 +133,11 @@
 
 <div class="col-md-4 border">
  <div class="row">
-   <div class=" col-md-4 col-sm-4">
+   <div class=" col-md-4 col-sm-4 col-4">
     <img src="{% static 'images/ethpng.png' %}" class="" style="width:100%; height:100%" alt="...">
    </div>
   
-   <div class="col-md-8 col-sm-8">
+   <div class="col-md-8 col-sm-8 col-8">
     <div>{{response.RAW.ETH.USD.FROMSYMBOL}}</div>
     <p>{{response.RAW.ETH.USD.PRICE}}$</p>
    </div>
@@ -141,11 +146,11 @@
 
 <div class="col-md-4 border">
  <div class="row">
-   <div class=" col-md-4 col-sm-4">
+   <div class=" col-md-4 col-sm-4 col-4">
     <img src="{% static 'images/bnbpng.png' %}" class="" style="width:100%; height:100%" alt="...">
    </div>
   
-   <div class="col-md-8 col-sm-8">
+   <div class="col-md-8 col-sm-8 col-8">
     <div>{{response.RAW.BNB.USD.FROMSYMBOL}}</div>
     <p>{{response.RAW.BNB.USD.PRICE}}$</p>
    </div>
@@ -154,11 +159,11 @@
 
 <div class="col-md-4 border">
  <div class="row">
-   <div class=" col-md-4 col-sm-4">
+   <div class=" col-md-4 col-sm-4 col-4">
     <img src="{% static 'images/Litecoinpng.png' %}" class="" style="width:100%; height:100%" alt="...">
    </div>
   
-   <div class="col-md-8 col-sm-8">
+   <div class="col-md-8 col-sm-8 col-8">
     <div>{{response.RAW.LTC.USD.FROMSYMBOL}}</div>
     <p>{{response.RAW.LTC.USD.PRICE}}$</p>
    </div>
@@ -167,11 +172,11 @@
 
 <div class="col-md-4 border">
  <div class="row">
-   <div class=" col-md-4 col-sm-4">
+   <div class=" col-md-4 col-sm-4 col-4">
     <img src="{% static 'images/adapng.png' %}" class="" style="width:100%; height:100%" alt="...">
    </div>
   
-   <div class="col-md-8 col-sm-8">
+   <div class="col-md-8 col-sm-8 col-8">
     <div>{{response.RAW.ADA.USD.FROMSYMBOL}}</div>
     <p>{{response.RAW.ADA.USD.PRICE}}$</p>
    </div>
@@ -180,11 +185,11 @@
 
 <div class="col-md-4 border">
  <div class="row">
-   <div class=" col-md-4 col-sm-4">
+   <div class=" col-md-4 col-sm-4 col-4">
     <img src="{% static 'images/polkadotpng.png' %}" class="" style="width:100%; height:100%" alt="...">
    </div>
   
-   <div class="col-md-8 col-sm-8">
+   <div class="col-md-8 col-sm-8 col-8">
     <div>{{response.RAW.DOT.USD.FROMSYMBOL}}</div>
     <p>{{response.RAW.DOT.USD.PRICE}}$</p>
    </div>

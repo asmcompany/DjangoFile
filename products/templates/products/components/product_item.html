@@ -2,10 +2,10 @@
 
       
 
-<div class="col-lg-4 col-md-6 col-sm-12 tm-catalog-item">
+<div class="col-md-4 col-sm-6  mb-3 text-center tm-catalog-item">
             <div class="position-relative tm-thumbnail-container">
                                 <a href="{% url 'products:detail' slug=product.slug %}">
-                               <img style="height: 300px ; width: auto" src="{{ product.image.url }}" alt="{{ product.title }}">
+                               <img style="height: 300px ; width: 500px" src="{{ product.image.url }}" alt="{{ product.title }}">
                                </a>
                                 <a href="{% url 'products:detail' slug=product.slug %}" class="position-absolute tm-img-overlay">     
                                 </a>
