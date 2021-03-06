@@ -14,7 +14,9 @@ def home_page(request):
     data = []
     
     response = requests.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,ADA,BNB,DOT,LTC&tsyms=USD').json()
-  
+
+   
+ 
     queryset = Product.objects.order_by('-like_count')[:7]
     for product in queryset:
         labels.append(product.title)
@@ -27,6 +29,7 @@ def home_page(request):
         'labels': labels,
         'data': data,
         'response': response
+        
     }
     if request.user.is_authenticated:
         context["new_content"] = "this is new content"
@@ -157,3 +160,32 @@ def register_page(request):
 def log_out(request):
     logout(request)
     return redirect('/')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# import requests
+
+# url = "https://veriphone.p.rapidapi.com/verify"
+
+# querystring = {"phone":"+4915123577723"}
+
+# headers = {
+#     'x-rapidapi-key': "SIGN-UP-FOR-KEY",
+#     'x-rapidapi-host': "veriphone.p.rapidapi.com"
+#     }
+
+# response = requests.request("GET", url, headers=headers, params=querystring)
+
+# print(response.text)
