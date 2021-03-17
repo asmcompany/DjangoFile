@@ -31,8 +31,9 @@
       </div>
       {% else %}
       <div>
+      
         <span  id="like_count">{{product.like_count}}</span>
-        <a href="{{ register_url }}" class="btn btn-link text-dark p-0 border-0 btn-outline-light"
+        <a href="/login" class="btn btn-link text-dark p-0 border-0 btn-outline-light"
            value="{{product.id}}">
         <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-heart" fill="currentColor"
              xmlns="http://www.w3.org/2000/svg">

@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse
 from .forms import ContactForm, LoginForm, RegisterForm
 from products.models import Product
 from django.contrib import auth
+
 import requests
 import json
 
@@ -23,12 +24,13 @@ def home_page(request):
         data.append(product.like_count)
     context = {
         "title": "صفحه اصلی",
-        "content": "خوش امدید",
+        "content": "محصولات",
         "brand": "Topleaarn Eshop From Views.py",
         "object_list": products,
         'labels': labels,
         'data': data,
-        'response': response
+        'response': response,
+        'user_name': request.user.username
         
     }
     if request.user.is_authenticated:
