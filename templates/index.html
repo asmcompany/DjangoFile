@@ -198,9 +198,24 @@
 </div>
 
 <br>
+<div id="demo"></div>
+<button type="submit" onclick="UserAction()">Search</button>
+<script>
+function UserAction() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        var arr = JSON.parse(this.responseText);
+         if (this.readyState == 4 && this.status == 200) {
+             document.getElementById("demo").innerHTML = arr[2];
+            
+         }
+    };
+    xhttp.open("GET", "https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,ADA,BNB,DOT,LTC&tsyms=USD", true);
+    xhttp.setRequestHeader("Content-type", "application/json");
+    xhttp.send("");
+}
 
-
-
+</script>
 
 {% endblock %}
 

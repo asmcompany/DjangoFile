@@ -33,24 +33,28 @@
 {% comment %} like js {% endcomment %}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-$(document).on('click', '#like-button', function (e) {
-    e.preventDefault();
+var btns = document.querySelectorAll(".btn");
+btns.forEach(function(e){
+  e.addEventListener("click", function(){
     $.ajax({
       type: 'POST',
       url: '{% url "accounts:like" %}',
       data: {
-        postid: $('#like-button').val(),
+        postid: e["value"],
         csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
         action: 'post'
       },
       success: function (json) {
-        document.getElementById("like_count").innerHTML = json['result']
+        e.childNodes[1].innerHTML = json['result']
       },
       error: function (xhr, errmsg, err) {
 
       }
     });
   })
+})
+    
+  
 </script>
 
     
